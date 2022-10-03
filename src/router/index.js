@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeSearch from "@/components/HomeSearch.vue";
+import ResultadoSearch from "@/components/ResultadoSearch.vue"
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,11 @@ const routes = [
     name: "home",
     component: HomeSearch,
   },
+  {
+    path: '/resultado',
+    name: 'resultado',
+    component: ResultadoSearch,
+  }
 ];
 
 const router = new VueRouter({
