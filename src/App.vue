@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <HomeSearch />
-
+    <router-view />
   </div>
 </template>
 <script>
-import HomeSearch from "./components/HomeSearch.vue";
+import HomeSearch from "./components/Home/HomeSearch.vue";
+
 
 export default {
   components: {

@@ -3,16 +3,23 @@
         <div class="containerSearch">
             <h1 class="tituloHome">Github <span class="tituloSearch">Search</span></h1>
             <div class="containerInput">
-                <input class="pesquisaHome" type="text" v-model="nomeUsuario" @keydown.enter="buscarUsuario" required>
+                <input class="barraPesquisa" type="text" v-model="nomeUsuario" @keydown.enter="buscarUsuario" required>
                 <span class="placeholderUsuario">Nome de Usuário</span>
                 <button class="botaoPesquisa" @click="buscarUsuario">Buscar</button>
             </div>
+            <router-link to="/resultado" tag="div" class="botaoPesquisa2">PAGINA RESULTADO</router-link>
         </div>
+        <Resultado :usuario="usuario"/> 
     </div>
 </template>
 
 <script>
+import Resultado from "@/components/Resultado/ResultadoSearch.vue"
+
 export default {
+    components: {
+        Resultado
+    },
     data() {
         return {
             nomeUsuario: '',
@@ -62,7 +69,7 @@ export default {
 
 
     /* PESQUISA */
-    .pesquisaHome {
+    .barraPesquisa {
         width: 600px;
         height: 50px;
         font-size: 1.275rem;
@@ -76,11 +83,16 @@ export default {
         cursor: text;
     }
     
-    .botaoPesquisa {
+    .botaoPesquisa, .botaoPesquisa2 {
         background: rgba(0, 0, 0, 0.7);
         border: none;
         color: #fff;
         cursor: pointer;
+    }
+
+    .botaoPesquisa2{ 
+        margin-top: 50px;
+        padding: 10px 30px;
     }
 
     .containerInput{
@@ -100,13 +112,13 @@ export default {
         color: #181818;
     }
     
-    .pesquisaHome:focus {
+    .barraPesquisa:focus {
         border: none;
         outline: 2px solid rgba(0, 0, 0, 0.7); ;
     }
 
-    .pesquisaHome:focus + .placeholderUsuario,
-    .pesquisaHome:valid + .placeholderUsuario {
+    .barraPesquisa:focus + .placeholderUsuario,
+    .barraPesquisa:valid + .placeholderUsuario {
         top: -13px;
         left: 15px;
         font-size: 1.075rem;
