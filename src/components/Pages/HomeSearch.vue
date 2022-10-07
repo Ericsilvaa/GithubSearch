@@ -25,14 +25,17 @@ export default {
             usuario: []
         }
     },
+    computed: {
+
+    },
     methods: {
         buscarUsuario(){
-           this.$http(`${this.nomeUsuario}`)
+            this.$http(`${this.nomeUsuario}`)
             .then(r => {
-                this.usuario = r.data
                 this.nomeUsuario = ''
+                this.usuario = r.data
+                this.$store.state.usuarios.push(this.usuario)
             })
-           
         }
     }
 }

@@ -3,29 +3,29 @@
 
     <section class="containerCorpo">
 
-      <div class="inicio">
+      <div class="inicio" v-for="usuario in usuarios" :key="usuario.name">
         <div>
-          <img src="" alt="">
-          <h4>Nome de Alguem</h4>
-          <span>Algum outro nome menor</span>
+          <img class="imagem-perfil" :src="usuario.avatar_url" alt="Imagem do Usuario">
+          <h4> {{usuario.name}} </h4>
+          <span> {{usuario.login}} </span>
         </div>
 
         <ul>
           <li>
             <img src="" alt="">
-            <span></span>
+            <span>{{usuario.company | ''}}</span>
           </li>
           <li>
             <img src="" alt="">
-            <span></span>
+            <span>{{usuario.location}}</span>
           </li>
           <li>
             <img src="" alt="">
-            <span></span>
+            <span>{{usuario.public_gists}}</span>
           </li>
           <li>
             <img src="" alt="">
-            <span></span>
+            <span>{{usuario.followers}}</span>
           </li>
         </ul>
 
@@ -44,19 +44,23 @@
 <script>
 
 export default {
-  data() {
-    return {
-
+computed: {
+   usuarios() {
+      return this.$store.state.usuarios
     }
-  },
+},
+
 }
 </script>
 
 <style scoped>
-
 .containerCorpo {
   display: grid;
   grid-template-columns: 1fr 600px 1fr;
 }
 
+.imagem-perfil {
+  width: 300px;
+  height: 300px;
+}
 </style>
