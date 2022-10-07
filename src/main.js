@@ -1,9 +1,9 @@
-import './style.css'
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
+import router from './routes/router'
 
 import './puglins/axios'
+import '@/styles/global.css'
 
 Vue.config.productionTip = false;
 

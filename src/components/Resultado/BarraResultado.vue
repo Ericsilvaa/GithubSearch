@@ -1,44 +1,93 @@
 <template>
-    <div class="barra">
-      <div>
-        <span class="tituloHome">Github <span class="tituloSearch">Search</span></span>
-      </div>
-      <div class="containerInput">
-        <input type="text" class="barraPesquisa">
-        <button class="botaoPesquisa">Buscar</button>
-      </div>
+  <header>
+
+    <div class="container">
+
+        <router-link class="logoHome" tag="div" to="/">
+          <span class="tituloHome">Github <span class="tituloSearch">Search</span></span>
+        </router-link>
+
+        <div class="containerInput">
+          <input type="text" class="barraPesquisa">
+          <button class="botaoPesquisa">Buscar</button>
+        </div>
+
     </div>
+
+  </header>
 </template>
 
-<script>
+<script scoped>
 export default {
-  
-  
-  data() {
-    return {
-      
-    }
-  },
+//   data() {
+//     return {
+//         nomeUsuario: '',
+//         usuario: []
+//     }
+// },
+// methods: {
+//     buscarUsuario(){
+//         this.$http(`${this.nomeUsuario}`)
+//         .then(r => {
+//             this.usuario = r.data
+//             this.nomeUsuario = ''
+//         })
+        
+//     }
+// }
 }
 </script>
 
 <style scoped>
-  .barra {
+
+  header {
+
+    height: 60px;
     display: flex;
+  }
+
+  .container {
+    display:flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.3);
   }
+
+  .logoHome {
+    cursor: pointer;
+  }
+  
   .tituloHome, .tituloSearch {
-    font-size: 3rem ;
+    font-size: 2rem ;
+    font-weight: 600;
+  }
+
+  .tituloSearch {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .containerInput {
+    display: flex;
   }
 
   .barraPesquisa{ 
-    width: 400px;
-    height: 40px;
+    width: 300px;
+    height: 30px;
+    font-size: 1.075rem;
+    font-weight: 500;
+    font-style: italic;
+    padding-left: 10px;
+    border: solid 2px rgba(0, 0, 0, 0.7);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    outline: none;
+    cursor: text;
   }
 
   .botaoPesquisa {
-    padding: 12px 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: #fff;
+    cursor: pointer;
   } 
 </style>

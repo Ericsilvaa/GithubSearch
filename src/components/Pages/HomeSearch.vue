@@ -1,25 +1,24 @@
 <template>
     <div class="usuarioInicio">
         <div class="containerSearch">
+
             <h1 class="tituloHome">Github <span class="tituloSearch">Search</span></h1>
+
             <div class="containerInput">
                 <input class="barraPesquisa" type="text" v-model="nomeUsuario" @keydown.enter="buscarUsuario" required>
                 <span class="placeholderUsuario">Nome de Usuário</span>
                 <button class="botaoPesquisa" @click="buscarUsuario">Buscar</button>
             </div>
-            <router-link to="/resultado" tag="div" class="botaoPesquisa2">PAGINA RESULTADO</router-link>
+            <router-link to="/resultado" tag="div" class="botaoPesquisa2">PAGINA IRÁ SAIR / RESULTADO</router-link>
         </div>
-        <Resultado :usuario="usuario"/> 
+
     </div>
 </template>
 
 <script>
-import Resultado from "@/components/Resultado/ResultadoSearch.vue"
+
 
 export default {
-    components: {
-        Resultado
-    },
     data() {
         return {
             nomeUsuario: '',
@@ -39,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* PRINCIPAL */
     .usuarioInicio {
         width: 100vw;

@@ -15,9 +15,28 @@ ul {
     list-style: none;
 }
   
-a {
+/* a {
     display: inline-block;
     text-decoration: none;
     color: inherit;
-}
+} */
   
+a {
+    text-decoration: none;
+    transition: 0.2s opacity;
+ }
+
+a:hover {
+    opacity: 0.8;
+}
+
+.container {
+    width: 95%;
+}
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+}
