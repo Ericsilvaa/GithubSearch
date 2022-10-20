@@ -1,7 +1,13 @@
 <template>    
 
     <section class="container">
-      <BarraResultado />
+      <div v-if="(usuarios, repos)">
+        <BarraResultado />
+        <CorpoResultado />
+      </div>
+
+      
+      <PaginaCarregando v-else/>
     </section>  
 
 </template>
@@ -14,6 +20,14 @@ export default {
   components: {
     BarraResultado,
     CorpoResultado
+  },
+  computed: {
+    usuarios() {
+      return this.$store.state.usuarios
+    },
+    repos() {
+      return this.$store.state.usuarios
+    }
   }
 }
 </script>

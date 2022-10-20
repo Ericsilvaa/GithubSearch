@@ -13,7 +13,7 @@
         <ul>
           <li>
             <img src="" alt="">
-            <span>{{usuario.company | ''}}</span>
+            <span>{{usuario.company}}</span>
           </li>
           <li>
             <img src="" alt="">
@@ -31,7 +31,15 @@
 
       </div>
 
-      <div class="meio"></div>
+      <div class="meio">
+        <ul>
+          <li v-for="repo in repos" :key="repo.id">
+            <p>{{repo[0].name}}</p>
+            <p>{{repo[1].name}}</p>
+            <p>{{repo[2].name}}</p>
+          </li>
+        </ul>
+      </div>
 
       <div class="fim"></div>
 
@@ -47,6 +55,9 @@ export default {
 computed: {
    usuarios() {
       return this.$store.state.usuarios
+    },    
+    repos() {
+      return this.$store.state.repos
     }
 },
 

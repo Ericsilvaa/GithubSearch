@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/resultado',
-    component: CorpoResultado,
+    component: ResultadoSearch,
   }
 ];
 

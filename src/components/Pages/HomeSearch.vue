@@ -1,41 +1,51 @@
 <template>
     <div class="usuarioInicio">
         <div class="containerSearch">
-
             <h1 class="tituloHome">Github <span class="tituloSearch">Search</span></h1>
-
             <div class="containerInput">
                 <input class="barraPesquisa" type="text" v-model="nomeUsuario" @keydown.enter="buscarUsuario" required>
                 <span class="placeholderUsuario">Nome de Usuário</span>
                 <button class="botaoPesquisa" @click="buscarUsuario">Buscar</button>
             </div>
-            <router-link to="/resultado" tag="div" class="botaoPesquisa2">PAGINA IRÁ SAIR / RESULTADO</router-link>
         </div>
 
     </div>
 </template>
 
 <script>
+import { api } from '@/puglins/axios'
 
 
 export default {
     data() {
         return {
             nomeUsuario: '',
-            usuario: []
+            usuario: [],
+            repo: []
         }
     },
     computed: {
 
     },
     methods: {
-        buscarUsuario(){
-            this.$http(`${this.nomeUsuario}`)
-            .then(r => {
+        async buscarUsuario(){
+            try {
+                const buscarUser = await api.get(`${this.nomeUsuario}`)
+                const buscarRepos = await api.get(`${this.nomeUsuario}/repos`)
                 this.nomeUsuario = ''
-                this.usuario = r.data
+                
+                this.$router.push("/resultado")
+
+                this.usuario = buscarUser.data
+                this.repo = buscarRepos.data
                 this.$store.state.usuarios.push(this.usuario)
-            })
+                this.$store.state.repos.push(this.repo)
+
+            } catch (error) {
+                console.log(error)
+            }
+
+            
         }
     }
 }
