@@ -5,10 +5,10 @@ Vue.use(VueRouter);
 
 import HomeSearch from '@/components/Pages/HomeSearch.vue'
 import ResultadoSearch from "@/components/Resultado/ResultadoSearch.vue"
+import PaginaErro from "@/components/PaginaErro.vue"
 
-// TEMPORARIO
-import HeaderResultado from "@/components/Resultado/BarraResultado.vue"
-import CorpoResultado from '@/components/Resultado/CorpoResultado.vue'
+
+
 
 const routes = [
   {
@@ -17,7 +17,11 @@ const routes = [
   },
   {
     path: '/resultado',
-    component: ResultadoSearch,
+    component: ResultadoSearch
+  },
+  {
+    path: '/404',
+    component: PaginaErro,
   }
 ];
 

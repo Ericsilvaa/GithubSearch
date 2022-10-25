@@ -17,15 +17,18 @@ export default {
 .loading {
   display: flex;
   justify-content: center;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 .loading span {
   display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 10px;
-  background: #87f;
-  margin: 4px;
-  animation: dots 0.6s cubic-bezier(0.6, 0.1, 1, 0.4) infinite alternate;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 6px;
+  animation: dots 0.4s cubic-bezier(0.6, 0.1, 1, 0.4) infinite alternate;
 }
 .loading span:nth-child(1) {
   animation-delay: 0.1s;

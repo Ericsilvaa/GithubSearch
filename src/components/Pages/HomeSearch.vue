@@ -1,24 +1,29 @@
 <template>
-    <div class="usuarioInicio">
-        <div class="containerSearch">
+    <div class="usuarioInicio" >
+        <div class="containerSearch" v-if="this.ativo">
             <h1 class="tituloHome">Github <span class="tituloSearch">Search</span></h1>
             <div class="containerInput">
                 <input class="barraPesquisa" type="text" v-model="nomeUsuario" @keydown.enter="buscarUsuario" required>
                 <span class="placeholderUsuario">Nome de Usuário</span>
-                <button class="botaoPesquisa" @click="buscarUsuario">Buscar</button>
+                <button class="botaoPesquisa" @click="buscarUsuario"></button>
             </div>
         </div>
 
+        <PaginaCarregando v-else />
     </div>
 </template>
 
 <script>
 import { api } from '@/puglins/axios'
+import ResultadoSearch from '../Resultado/ResultadoSearch.vue'
+import PaginaCarregando from '../PaginaCarregando.vue'
 
 
 export default {
+  components: { ResultadoSearch, PaginaCarregando },
     data() {
         return {
+            ativo: true,
             nomeUsuario: '',
             usuario: [],
             repo: []
@@ -29,6 +34,8 @@ export default {
     },
     methods: {
         async buscarUsuario(){
+            this.ativo = false
+
             try {
                 const buscarUser = await api.get(`${this.nomeUsuario}`)
                 const buscarRepos = await api.get(`${this.nomeUsuario}/repos`)
@@ -38,14 +45,25 @@ export default {
 
                 this.usuario = buscarUser.data
                 this.repo = buscarRepos.data
+                
                 this.$store.state.usuarios.push(this.usuario)
-                this.$store.state.repos.push(this.repo)
-
+                this.$store.state.repos.push(...this.repo)
+                console.log(this.$store.state.repos.push(...this.repo))
+                
             } catch (error) {
-                console.log(error)
+
+                if (error.response.status == 404) {
+                    this.$router.push("/404")
+                    setTimeout(() => {
+                        this.$router.push("/")
+                    }, 5000);
+                    
+                } else {
+                    console.log("Outro Erro Encontrado")
+                }
+                
             }
 
-            
         }
     }
 }
@@ -95,16 +113,14 @@ export default {
         cursor: text;
     }
     
-    .botaoPesquisa, .botaoPesquisa2 {
-        background: rgba(0, 0, 0, 0.7);
+    .botaoPesquisa {
         border: none;
         color: #fff;
         cursor: pointer;
-    }
-
-    .botaoPesquisa2{ 
-        margin-top: 50px;
-        padding: 10px 30px;
+        background: url(../../assets/search.svg) rgba(0, 0, 0, 0.7) no-repeat center;
+        padding: 25px 30px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
     }
 
     .containerInput{
@@ -126,7 +142,7 @@ export default {
     
     .barraPesquisa:focus {
         border: none;
-        outline: 2px solid rgba(0, 0, 0, 0.7); ;
+        outline: 1px solid rgba(0, 0, 0, 0.7); ;
     }
 
     .barraPesquisa:focus + .placeholderUsuario,

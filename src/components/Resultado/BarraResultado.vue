@@ -1,18 +1,20 @@
 <template>
   <header>
-
-    <div class="container">
-
-        <router-link class="logoHome" tag="div" to="/">
-          <span class="tituloHome">Github <span class="tituloSearch">Search</span></span>
-        </router-link>
-
-        <div class="containerInput">
-          <input type="text" class="barraPesquisa">
-          <button class="botaoPesquisa">Buscar</button>
-        </div>
-
-    </div>
+    <v-toolbar elevation="1" flat class="toolbar">
+      
+      <div class="container">
+  
+          <router-link class="logoHome" tag="div" to="/">
+            <span class="tituloHome">Github <span class="tituloSearch">Search</span></span>
+          </router-link>
+  
+          <div class="containerInput">
+            <input type="text" class="barraPesquisa">
+            <button class="botaoPesquisa"></button>
+          </div>
+  
+      </div>
+    </v-toolbar>
 
   </header>
 </template>
@@ -40,16 +42,9 @@ export default {
 
 <style scoped>
 
-  header {
-
-    height: 60px;
-    display: flex;
-  }
-
-  .container {
+.container {
     display:flex;
     align-items: center;
-    justify-content: space-between;
   }
 
   .logoHome {
@@ -71,7 +66,7 @@ export default {
   }
 
   .barraPesquisa{ 
-    width: 300px;
+    width: 250px;
     height: 30px;
     font-size: 1.075rem;
     font-weight: 500;
@@ -85,7 +80,10 @@ export default {
   }
 
   .botaoPesquisa {
-    background: rgba(0, 0, 0, 0.7);
+    background: url(../../assets/search.svg) rgba(0, 0, 0, 0.7) no-repeat center;
+    padding: 10px 20px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     border: none;
     color: #fff;
     cursor: pointer;

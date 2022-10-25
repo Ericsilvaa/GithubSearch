@@ -1,8 +1,8 @@
 <template>    
 
-    <section class="container">
+    <section>
       <div v-if="(usuarios, repos)">
-        <BarraResultado />
+        <BarraResultado class="barra" />
         <CorpoResultado />
       </div>
 
@@ -32,7 +32,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.barra {
+  margin-bottom: 40px;
+}
 
 
 </style>

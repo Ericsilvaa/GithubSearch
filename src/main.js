@@ -6,6 +6,7 @@ import PaginaCarregando from '@/components/PaginaCarregando.vue'
 
 import './puglins/axios'
 import '@/styles/global.css'
+import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false;
 
@@ -14,5 +15,6 @@ Vue.component('PaginaCarregando', PaginaCarregando)
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  vuetify,
+  render: (h) => h(App)
 }).$mount("#app");
